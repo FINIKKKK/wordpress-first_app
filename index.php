@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="css/fontello.css">
   <link rel="stylesheet" href="css/style.css">
   <title>Document</title>
+  <?php wp_head();?>
 </head>
 
 <body>
@@ -174,8 +175,7 @@
     </div>
   </div>
 
-  <script src="js/jquery-3.5.1.min.js"></script>
-  <script src="js/main.js"></script>
+  <?php wp_footer();?>
 </body>
 
 </html>
