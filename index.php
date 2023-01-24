@@ -68,50 +68,46 @@ if (!empty($card['team__card-instagram']['url'])) {
       </div>
     </div>
   </div>
-  <div cylass="provide" id="provide">
+  <div class="provide" id="provide">
     <div class="container">
       <div class="block__head inverse">
-        <h2 class="block__title">We provide you everything</h2>
-        <p class="block__text">Maybe not everything, but we provide you some stuff.</p>
+        <h2 class="block__title"><?=CFS()->get('services__title')?></h2>
+        <p class="block__text"><?=CFS()->get('services__text')?></p>
       </div>
       <div class="provide__inner">
+        <?php $loop = CFS()->get('service');
+foreach ($loop as $service) {
+    ?>
         <div class="provide__item">
-          <i class="icon-chart-line"></i>
-          <h3 class="provide__item-title">Some Analytics</h3>
-          <p class="provide__item-text">Aenean nisi lectus, convallis non lorem sit amet, rhoncus malesuada justo</p>
+          <img src="<?=$service['service__img']?>" alt="icon">
+          <h3 class="provide__item-title"><?=$service['service__title']?></h3>
+          <p class="provide__item-text"><?=$service['service__text']?></p>
         </div>
-        <div class="provide__item">
-          <i class="icon-heart"></i>
-          <h3 class="provide__item-title">We provide you love</h3>
-          <p class="provide__item-text">Aenean nisi lectus, convallis non lorem sit amet, rhoncus malesuada justo</p>
-        </div>
-        <div class="provide__item">
-          <i class="icon-upload-cloud-outline"></i>
-          <h3 class="provide__item-title">And Some Cloud</h3>
-          <p class="provide__item-text">Aenean nisi lectus, convallis non lorem sit amet, rhoncus malesuada justo</p>
-        </div>
+        <?php
+}
+?>
       </div>
     </div>
   </div>
   <div class="contact" id="contact">
     <div class="container">
       <div class="block__head">
-        <h2 class="block__title">Contac Us</h2>
-        <p class="block__text">We know what we need to do</p>
+        <h2 class="block__title"><?=CFS()->get('footer__title')?></h2>
+        <p class="block__text"><?=CFS()->get('footer__text')?></p>
       </div>
       <div class="contact__inner">
         <div class="contact__icon-box">
           <div class="contact__item">
             <i class="icon-phone"></i>
-            <div class="contact__text"><a href="tel:555222333">555-222-333</a></div>
+            <div class="contact__text"><a href="tel:<?=CFS()->get('footer__phone')?>"><?=CFS()->get('footer__phone')?></a></div>
           </div>
           <div class="contact__item">
             <i class="icon-location"></i>
-            <div class="contact__text"><a href="https://goo.gl/maps/ot9BCyYtQbSXoJYRA" target="_blank">Here is some address</a></div>
+            <div class="contact__text"><a href="<?=CFS()->get('footer__address')['url']?>" target="<?=CFS()->get('footer__address')['target']?>">Here is some address</a></div>
           </div>
           <div class="contact__item">
             <i class="icon-mail-alt"></i>
-            <div class="contact__text"><a href="mailto:somemail@hotmail.com">somemail@hotmail.com</a></div>
+            <div class="contact__text"><a href="mailto:<?=CFS()->get('footer__email')?>"><?=CFS()->get('footer__email')?></a></div>
           </div>
         </div>
         <form action="" class="contact__form">
@@ -121,6 +117,7 @@ if (!empty($card['team__card-instagram']['url'])) {
           <textarea class="contact__textarea" placeholder="Write your Message here..."></textarea>
           <input type="submit" class="contact__button" value="Submit">
         </form>
+        <?php the_content()?>
       </div>
     </div>
   </div>
