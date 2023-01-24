@@ -57,6 +57,10 @@ body {
   margin: 0 16px;
 }
 
+.header {
+  padding-top: 15px;
+}
+
 .header__content {
   text-align: center;
 }
@@ -102,12 +106,8 @@ body {
 
 /*О нас*/
 .about {
-  height: 1129px;
   padding-top: 128px;
   padding-bottom: 271px;
-  background: url(../img/buildings_white.png) center 100% repeat-x,
-    url(../img/buildings_dark.png) center 100% repeat-x,
-    #1d1d1d;
   /* background-size: contain, contain; */
 }
 
@@ -176,6 +176,16 @@ body {
   letter-spacing: 0.02em;
   color: #898888;
   margin: 0;
+}
+
+.swiper {
+  width: 100%;
+}
+
+.swiper-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 }
 
 .team__inner {

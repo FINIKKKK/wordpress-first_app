@@ -1,117 +1,74 @@
-<!DOCTYPE html>
-<html lang="en">
+  <?php get_header();?>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/fontello.css">
-  <link rel="stylesheet" href="css/style.css">
-  <title>Document</title>
-  <?php wp_head();?>
-</head>
-
-<body>
-  <header class="header">
-    <div class="container">
-      <nav class="menu__desktop">
-        <ul class="menu">
-          <li class="menu__item active"><a href="#">Home</a></li>
-          <li class="menu__item"><a href="#about">About Us</a></li>
-          <li class="menu__item"><a href="#team">Team</a></li>
-          <li class="menu__item"><a href="#"><img src="img/logo.png" alt="" class="logo"></a></li>
-          <li class="menu__item"><a href="#provide">Services</a></li>
-          <li class="menu__item"><a href="#">Blog</a></li>
-          <li class="menu__item"><a href="#contact">Contact Us</a></li>
-        </ul>
-      </nav>
-      <nav class="menu__mobile">
-        <div class="menu__inner">
-          <a href="#"><img src="img/logo.png" alt="" class="logo"></a>
-          <div class="menu__burger"><span>toggle menu</span></div>
-        </div>
-        <ul class="menu">
-          <li class="menu__item active"><a href="#">Home</a></li>
-          <li class="menu__item"><a href="#about">About Us</a></li>
-          <li class="menu__item"><a href="#team">Team</a></li>
-          <li class="menu__item"><a href="#provide">Services</a></li>
-          <li class="menu__item"><a href="#">Blog</a></li>
-          <li class="menu__item"><a href="#contact">Contact Us</a></li>
-        </ul>
-      </nav>
-      <div class="header__content">
-        <h1 class="header__title">We build it with passion</h1>
-        <p class="header__text">Just to be clear, we do this for fun not for you, just kidding.</p>
-        <a href="" class="header__button">READ MORE</a>
-      </div>
-    </div>
-  </header>
-  <div class="about" id="about">
+  <div class="about" id="about" style=" background: url(<?=CFS()->get('bg__light')?>) center 100% repeat-x,
+    url(<?=CFS()->get('bg__dark')?>) center 100% repeat-x,
+    #1d1d1d;">
     <div class="container">
       <div class="about__inner">
-        <div class="about__item">
-          <div class="about__year">2011</div>
-          <div class="about__text">Lorem ipsum dolor sit amet, consectetur adipiselit. Vivamus varius nec diam
-            vitae hendrerit bigus mit.</div>
-        </div>
-        <div class="about__item">
-          <div class="about__year">2012</div>
-          <div class="about__text">Lorem ipsum dolor sit amet, consectetur adipiselit. Vivamus varius nec diam
-            vitae hendrerit bigus mit.
-            Begitus vit urna nulla.</div>
-        </div>
-        <div class="about__item">
-          <div class="about__year">2013</div>
-          <div class="about__text">Sed at auctor sem, nec tincidunt elit. Pellentesque enim turpis, porttitor
-            ac orci in, ultrices efficitur nisl. Ut odio libero, sodales a tellus eleifend, suscipit dapibus
-            mi.</div>
-        </div>
-        <div class="about__item">
-          <div class="about__year">2014</div>
-          <div class="about__text">Lorem ipsum dolor sit amet, consectetur adipiselit. Vivamus varius nec diam
-            vitae hendrerit bigus mit.
-            Begitus vit urna nulla.</div>
-        </div>
+        <?php
+$loop = CFS()->get('card');
+foreach ($loop as $card) {;
+    ?>
+              <div class="about__item">
+                <div class="about__year"><?=$card['card__year'];?></div>
+                <div class="about__text"><?=$card['card__text'];?></div>
+              </div>
+              <?php
+}
+?>
+
+
       </div>
     </div>
   </div>
   <div class="team" id="team">
     <div class="container">
       <div class="block__head">
-        <h2 class="block__title">This is our team</h2>
-        <p class="block__text">We are small but effective and ...</p>
+        <h2 class="block__title"><?=CFS()->get('team__title')?></h2>
+        <p class="block__text"><?=CFS()->get('team__text')?></p>
       </div>
       <div class="team__inner">
+        <div class="swiper">
+          <div class="swiper-wrapper">
+             <?php
+$loop = CFS()->get('team__card');
+foreach ($loop as $card) {
+    ?>
+    <div class="swiper-slide">
         <div class="team__item">
-          <img class="team__item-img" src="img/team1.png" alt="">
-          <h3 class="team__item-title">Mark Once</h3>
-          <p class="team__item-text">Designer & Front-End Developer</p>
+          <img class="team__item-img" src="<?=$card['team__card-img']?>" alt="">
+          <h3 class="team__item-title"><?=$card['team__card-name']?></h3>
+          <p class="team__item-text"><?=$card['team__card-post']?></p>
           <div class="team__icon-box">
-            <a href="#"><i class="icon-twitter"></i></a>
-            <a href="#"><i class="icon-instagram"></i></a>
+            <?php
+if (!empty($card['team__card-twitter']['url'])) {
+        ?>
+            <a href="<?=$card['team__card-twitter']['url']?>" target="<?=$card['team__card-twitter']['target']?>"><i class="icon-twitter"></i></a>
+            <?php
+}
+    ?>
+    <?php
+if (!empty($card['team__card-instagram']['url'])) {
+        ?>
+            <a href="<?=$card['team__card-instagram']['url']?>" target="<?=$card['team__card-instagram']['target']?>"><i class="icon-instagram"></i></a>
+            <?php
+}
+    ?>
           </div>
         </div>
-        <div class="team__item">
-          <img class="team__item-img" src="img/team2.png" alt="">
-          <h3 class="team__item-title">Justin Twice</h3>
-          <p class="team__item-text">Founder & CEO</p>
-          <div class="team__icon-box">
-            <a href="#"><i class="icon-twitter"></i></a>
-            <a href="#"><i class="icon-instagram"></i></a>
-          </div>
         </div>
-        <div class="team__item">
-          <img class="team__item-img" src="img/team3.png" alt="">
-          <h3 class="team__item-title">Antonio Never</h3>
-          <p class="team__item-text">Someone & Somewhere</p>
-          <div class="team__icon-box">
-            <a href="#"><i class="icon-twitter"></i></a>
-            <a href="#"><i class="icon-instagram"></i></a>
+        <?php
+}
+?>
           </div>
+
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
         </div>
       </div>
     </div>
   </div>
-  <div class="provide" id="provide">
+  <div cylass="provide" id="provide">
     <div class="container">
       <div class="block__head inverse">
         <h2 class="block__title">We provide you everything</h2>
@@ -167,15 +124,5 @@
       </div>
     </div>
   </div>
-  <div class="footer">
-    <div class="container">
-      <div class="footer__text">
-        Copyright &copy; Kenan Hamidic. All rights reserved.
-      </div>
-    </div>
-  </div>
 
-  <?php wp_footer();?>
-</body>
-
-</html>
+  <?php get_footer();?>
